@@ -5,8 +5,12 @@
   "scripts": {
     "dev": "box dev",
     "build": "box build",
+    "build:analyze": "box build --analyze",
+    "build:prod": "box build --minify=aggressive",
     "start": "node dist/server.js",
-    "preview": "npm run build && npm run start"
+    "preview": "npm run build && npm run start",
+    "clean": "box clean",
+    "lint": "box lint"
   },
   "keywords": [
     "box",
@@ -16,6 +20,6 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@itayzrihan/box-framework": "^1.0.0"
+    "@itayzrihan/box-framework": "^1.1.0"
   }
 }

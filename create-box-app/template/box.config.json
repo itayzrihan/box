@@ -1,0 +1,14 @@
+{
+  "//": "BOX Framework Configuration",
+  "//": "See: https://github.com/itayzrihan/box#configuration",
+  
+  "minify": "basic",
+  "outDir": "dist",
+  "srcDir": "src",
+  "port": 3000,
+  
+  "build": {
+    "cleanFirst": false,
+    "analyze": false
+  }
+}

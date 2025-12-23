@@ -38,6 +38,7 @@ Visit **http://localhost:3000** and start building!
 ```
 my-box-app/
 ├── my-box-app.code-workspace  # ⬅️ OPEN THIS FILE in VS Code!
+├── box.config.json       # Build configuration
 ├── src/
 │   ├── main.box          # App entry point
 │   ├── counter.box       # State management example
@@ -114,8 +115,51 @@ Files named `api+name.box` become routes:
 |---------|-------------|
 | `npm run dev` | Start development server with HMR |
 | `npm run build` | Build for production |
+| `npm run build:analyze` | Build with detailed bundle analysis |
+| `npm run build:prod` | Build with aggressive minification |
 | `npm run start` | Run production server |
 | `npm run preview` | Build and run production |
+| `npm run clean` | Remove dist/ and build artifacts |
+| `npm run lint` | Validate all .box files for errors |
+
+## 📦 CLI Commands
+
+The BOX CLI offers powerful tools for development:
+
+```bash
+# Generate new components
+box add ui header        # Create UI component
+box add api users        # Create API endpoint
+box add page about       # Create full page with SEO meta
+box add layout main      # Create layout wrapper
+
+# Development
+box dev                  # Start dev server with HMR
+box build                # Production build
+box build --analyze      # Show bundle analysis
+box build --minify=none  # Disable minification
+
+# Maintenance
+box clean                # Remove build artifacts
+box lint                 # Validate .box files
+```
+
+## ⚙️ Configuration
+
+Your project includes `box.config.json` for customization:
+
+```json
+{
+  "minify": "basic",        // none | basic | aggressive
+  "outDir": "dist",
+  "srcDir": "src",
+  "port": 3000,
+  "build": {
+    "cleanFirst": false,
+    "analyze": false
+  }
+}
+```
 
 ## 🔌 VS Code Setup
 
