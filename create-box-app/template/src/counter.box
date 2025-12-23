@@ -1,0 +1,136 @@
+<style>
+  /* BOX Scoping: Each component's styles are automatically scoped
+     with a data-box attribute, preventing CSS collisions across your app */
+  .counter {
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .counter h2 {
+    color: #667eea;
+    margin: 0 0 1.5rem 0;
+    font-size: 24px;
+  }
+
+  .counter-display {
+    font-size: 48px;
+    font-weight: bold;
+    color: #764ba2;
+    margin: 2rem 0;
+    font-family: 'Courier New', monospace;
+  }
+
+  .counter-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-decrease {
+    background: #ff6b6b;
+    color: white;
+  }
+
+  .btn-decrease:hover {
+    background: #ee5a52;
+    transform: translateY(-2px);
+  }
+
+  .btn-increase {
+    background: #667eea;
+    color: white;
+  }
+
+  .btn-increase:hover {
+    background: #5a67d8;
+    transform: translateY(-2px);
+  }
+
+  .btn-reset {
+    background: #95a5a6;
+    color: white;
+  }
+
+  .btn-reset:hover {
+    background: #7f8c8d;
+    transform: translateY(-2px);
+  }
+
+  .counter-note {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 1.5rem;
+    line-height: 1.6;
+  }
+</style>
+
+<template>
+  <div class="counter">
+    <h2>Counter Demo</h2>
+    <div class="counter-display" box-bind="count">0</div>
+    
+    <div class="counter-controls">
+      <button class="btn btn-decrease">− Decrease</button>
+      <button class="btn btn-increase">+ Increase</button>
+      <button class="btn btn-reset">⟲ Reset</button>
+    </div>
+
+    <div class="counter-note">
+      💡 <strong>Vibe Coding Tip:</strong> This counter demonstrates two-way binding.
+      The <code>box-bind="count"</code> attribute keeps the DOM in sync with
+      <code>Box.state.count</code> automatically. Change state, see the UI update instantly!
+    </div>
+  </div>
+</template>
+
+<script>
+  /* REACTIVE STATE: Box.state uses JavaScript Proxy for reactivity
+     Any property you add to Box.state automatically updates the DOM
+     where it's referenced with box-bind="propertyName" */
+  
+  Box.state.count = 0;
+
+  /* EVENT HANDLING: Query selectors work just like vanilla JS.
+     BOX components are scoped, so event handlers won't collide */
+  
+  const decreaseBtn = document.querySelector('.btn-decrease');
+  const increaseBtn = document.querySelector('.btn-increase');
+  const resetBtn = document.querySelector('.btn-reset');
+
+  decreaseBtn.addEventListener('click', () => {
+    Box.state.count--;
+    Box.emit('count:changed', Box.state.count);
+  });
+
+  increaseBtn.addEventListener('click', () => {
+    Box.state.count++;
+    Box.emit('count:changed', Box.state.count);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    Box.state.count = 0;
+    Box.emit('count:changed', Box.state.count);
+  });
+
+  /* LIFECYCLE: Components run their script when they load.
+     Use Box.on() to listen for custom events or state changes */
+  
+  Box.on('count:changed', (newCount) => {
+    console.log(`Count is now: ${newCount}`);
+  });
+</script>

@@ -1,0 +1,208 @@
+<style>
+  .learning-guide {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fafafa;
+    border-radius: 12px;
+    line-height: 1.8;
+  }
+
+  .learning-guide h2 {
+    color: #667eea;
+    margin-top: 2rem;
+  }
+
+  .learning-guide h3 {
+    color: #764ba2;
+    margin-top: 1.5rem;
+  }
+
+  .learning-guide code {
+    background: #f0f0f0;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    color: #e74c3c;
+  }
+
+  .tip-box {
+    background: #e8f4f8;
+    border-left: 4px solid #667eea;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+  }
+
+  .tip-box strong {
+    color: #667eea;
+  }
+
+  .code-block {
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+  }
+</style>
+
+<template>
+  <div class="learning-guide">
+    <h1>🎓 Vibe Coding Guide for BOX Framework</h1>
+
+    <p>
+      Welcome! This template shows you how to build amazing web apps with BOX Framework.
+      BOX is all about <strong>zero dependencies</strong>, <strong>component-driven development</strong>,
+      and <strong>AI-friendly code</strong>.
+    </p>
+
+    <h2>🏗️ Project Structure</h2>
+    <p>Your app is organized in the <code>src/</code> folder:</p>
+    <ul>
+      <li><code>main.box</code> - Your app's entry point</li>
+      <li><code>welcome.box</code> - The beautiful welcome screen</li>
+      <li><code>counter.box</code> - Example: Interactive state management</li>
+      <li><code>api-demo.box</code> - Example: API integration</li>
+      <li><code>api+hello.box</code> - Backend API endpoint</li>
+    </ul>
+
+    <h2>📝 Understanding .box Files</h2>
+    <p>Each <code>.box</code> file is a complete component with three sections:</p>
+
+    <h3>1. &lt;style&gt; - Scoped CSS</h3>
+    <div class="tip-box">
+      <strong>💡 Vibe Tip:</strong> Your styles are automatically scoped!
+      BOX adds a unique <code>data-box</code> attribute to prevent collisions.
+      Write CSS naturally without worrying about class name conflicts.
+    </div>
+
+    <h3>2. &lt;template&gt; - HTML Structure</h3>
+    <p>Use standard HTML with special BOX attributes:</p>
+    <ul>
+      <li><code>box-bind="propertyName"</code> - Two-way binding with state</li>
+      <li><code>&lt;include src="./other.box" /&gt;</code> - Nest components</li>
+    </ul>
+
+    <div class="tip-box">
+      <strong>💡 Vibe Tip:</strong> <code>box-bind</code> automatically syncs your component
+      with <code>Box.state</code>. Change state, see the UI update instantly!
+    </div>
+
+    <h3>3. &lt;script&gt; - Component Logic</h3>
+    <p>Vanilla JavaScript! No special syntax required.</p>
+
+    <h2>⚡ Key BOX Concepts</h2>
+
+    <h3>Reactive State</h3>
+    <div class="code-block">Box.state.myValue = 'hello';
+Box.state.counter = 0;
+
+// Any property you add automatically updates the DOM
+Box.state.counter++; // Updates all box-bind="counter" elements</div>
+
+    <div class="tip-box">
+      <strong>💡 Vibe Tip:</strong> BOX uses JavaScript Proxy for reactivity.
+      It's simple, no virtual DOM, and super performant.
+    </div>
+
+    <h3>Event Handling</h3>
+    <p>Use vanilla DOM queries and event listeners:</p>
+    <div class="code-block">const btn = document.querySelector('.my-button');
+btn.addEventListener('click', () => {
+  Box.state.count++;
+});</div>
+
+    <h3>Emitting Custom Events</h3>
+    <div class="code-block">// In one component:
+Box.emit('user:logged-in', userData);
+
+// In another component:
+Box.on('user:logged-in', (data) => {
+  console.log('User logged in:', data);
+});</div>
+
+    <h2>🔌 API Endpoints</h2>
+    <p>Files named <code>api+name.box</code> become API routes:</p>
+    <ul>
+      <li><code>api+hello.box</code> → <code>GET /api/hello</code></li>
+      <li><code>api+users.box</code> → <code>GET /api/users</code></li>
+      <li><code>api+post+create.box</code> → <code>POST /api/post/create</code></li>
+    </ul>
+
+    <h3>API Box Structure</h3>
+    <div class="code-block">/* BOX_CONFIG: { "method": "POST", "auth": false } */
+
+export default async (req, res, context) => {
+  try {
+    const result = { success: true, data: req.body };
+    return { status: 200, data: result };
+  } catch (err) {
+    return { status: 500, error: err.message };
+  }
+};</div>
+
+    <div class="tip-box">
+      <strong>💡 Vibe Tip:</strong> You write plain async functions.
+      BOX handles the HTTP routing, request parsing, and response formatting automatically.
+    </div>
+
+    <h2>🚀 Development Workflow</h2>
+    <ol>
+      <li>Edit <code>.box</code> files in <code>src/</code></li>
+      <li>Save the file</li>
+      <li>Browser auto-refreshes (HMR)</li>
+      <li>See your changes instantly</li>
+    </ol>
+
+    <div class="tip-box">
+      <strong>💡 Vibe Tip:</strong> BOX watches for changes and rebuilds automatically.
+      No manual build step needed during development!
+    </div>
+
+    <h2>📦 Building for Production</h2>
+    <div class="code-block">npm run build</div>
+    <p>This generates <code>dist/</code> with:</p>
+    <ul>
+      <li><code>index.html</code> - Compiled frontend</li>
+      <li><code>app.js</code> - Minified frontend code</li>
+      <li><code>style.css</code> - Minified styles</li>
+      <li><code>server.js</code> - Node.js backend server</li>
+    </ul>
+
+    <h2>🎯 Next Steps</h2>
+    <ol>
+      <li>✅ Run <code>npm run dev</code> to start the development server</li>
+      <li>✅ Edit <code>src/main.box</code> to customize your app</li>
+      <li>✅ Create new <code>.box</code> components in <code>src/</code></li>
+      <li>✅ Use <code>api+name.box</code> for backend endpoints</li>
+      <li>✅ Build with <code>npm run build</code> for production</li>
+    </ol>
+
+    <h2>📚 Learn More</h2>
+    <ul>
+      <li>📖 <a href="https://github.com/itayzrihan/box" target="_blank">BOX Framework GitHub</a></li>
+      <li>💬 Check the other example components: <code>counter.box</code> and <code>api-demo.box</code></li>
+      <li>🤖 These .box files are AI-friendly! Paste the entire component into Claude, ChatGPT, etc. for help</li>
+    </ul>
+
+    <h2>🎨 Your Turn!</h2>
+    <p>
+      Now that you understand the basics, start building! Edit <code>main.box</code> and add
+      your own components. BOX is designed to get out of your way so you can focus on
+      building great UIs.
+    </p>
+
+    <p style="text-align: center; margin-top: 3rem; color: #667eea; font-size: 18px;">
+      <strong>Happy Vibe Coding! 🚀</strong>
+    </p>
+  </div>
+</template>
+
+<script>
+  // This is just a documentation component, no logic needed!
+  console.log('📚 Learning guide loaded. Check the examples in counter.box and api-demo.box!');
+</script>

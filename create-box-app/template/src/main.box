@@ -3,15 +3,88 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 2rem;
+  }
+
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .app-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .app-header h1 {
+    color: #667eea;
+    margin: 0;
+    font-size: 32px;
+  }
+
+  .app-header p {
+    color: #7f8c8d;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .examples-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .app-header h1 {
+      font-size: 24px;
+    }
   }
 </style>
 
 <template>
   <div class="app">
-    <include src="./welcome.box" />
+    <div class="app-container">
+      <div class="app-header">
+        <h1>⚡ BOX Framework</h1>
+        <p>Zero-dependency, full-stack web framework</p>
+      </div>
+
+      <!-- Learning Guide -->
+      <include src="./learning-guide.box" />
+
+      <!-- Examples Section -->
+      <div style="text-align: center; margin-top: 3rem; margin-bottom: 1rem;">
+        <h2 style="color: #667eea;">📖 Live Examples</h2>
+        <p style="color: #7f8c8d;">Click around to see BOX in action</p>
+      </div>
+
+      <div class="examples-grid">
+        <include src="./counter.box" />
+        <include src="./api-demo.box" />
+      </div>
+
+      <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: rgba(255,255,255,0.8); border-radius: 12px;">
+        <h3 style="color: #667eea; margin-top: 0;">Ready to build?</h3>
+        <p style="color: #7f8c8d;">
+          Edit files in <code style="background: #f0f0f0; padding: 0.25rem 0.5rem; border-radius: 4px;">src/</code>
+          and watch changes live. Check <code style="background: #f0f0f0; padding: 0.25rem 0.5rem; border-radius: 4px;">counter.box</code> 
+          and <code style="background: #f0f0f0; padding: 0.25rem 0.5rem; border-radius: 4px;">api-demo.box</code> for code examples.
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  // This is your app's entry point
+  // BOX automatically includes all files referenced with <include />
+  console.log('🚀 BOX App loaded successfully!');
+</script>
   console.log('📦 BOX App initialized!');
 </script>

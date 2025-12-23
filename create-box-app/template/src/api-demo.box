@@ -1,0 +1,79 @@
+<style>
+  /* API INTEGRATION COMPONENT
+     This component shows how to fetch data from BOX API endpoints */
+  
+  .api-demo {
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+  }
+
+  .api-demo h3 {
+    margin-top: 0;
+    color: #667eea;
+  }
+
+  .api-response {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    overflow-x: auto;
+  }
+
+  .loading {
+    color: #667eea;
+    font-style: italic;
+  }
+
+  .error {
+    color: #e74c3c;
+  }
+
+  .success {
+    color: #27ae60;
+  }
+</style>
+
+<template>
+  <div class="api-demo">
+    <h3>📡 API Call Example</h3>
+    <p>Click below to fetch data from your BOX API endpoint:</p>
+    <button id="fetchBtn" style="padding: 0.5rem 1rem; cursor: pointer;">
+      Fetch from /api/hello
+    </button>
+    <div id="response" class="api-response loading">
+      Click the button to see the response...
+    </div>
+  </div>
+</template>
+
+<script>
+  /* CALLING BOX APIS: BOX automatically generates API routes
+     from files named api+name.box
+     So api+hello.box → GET /api/hello */
+  
+  const fetchBtn = document.querySelector('#fetchBtn');
+  const responseDiv = document.querySelector('#response');
+
+  fetchBtn.addEventListener('click', async () => {
+    responseDiv.className = 'api-response loading';
+    responseDiv.textContent = 'Loading...';
+
+    try {
+      /* FETCH WITH FULL URL: In development (http://localhost:3000)
+         and production, all API calls are relative to the app root */
+      const response = await fetch('/api/hello');
+      const data = await response.json();
+
+      responseDiv.className = 'api-response success';
+      responseDiv.textContent = JSON.stringify(data, null, 2);
+    } catch (error) {
+      responseDiv.className = 'api-response error';
+      responseDiv.textContent = `Error: ${error.message}`;
+    }
+  });
+</script>
