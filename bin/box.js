@@ -13,6 +13,8 @@ const { init } = require('../lib/commands/init');
 const { build } = require('../lib/commands/build');
 const { dev } = require('../lib/commands/dev');
 const { add } = require('../lib/commands/add');
+const { clean } = require('../lib/commands/clean');
+const { lint } = require('../lib/commands/lint');
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -25,17 +27,48 @@ const HELP_TEXT = `
 Usage: box <command> [options]
 
 Commands:
-  init              Scaffold a new BOX project
-  dev               Start development server with HMR
-  build             Compile src/ to dist/ for production
-  add <type> <name> Generate a new .box file (ui or api)
+  init                  Scaffold a new BOX project
+  dev                   Start development server with HMR
+  build [options]       Compile src/ to dist/ for production
+  add <type> <name>     Generate a new .box file
+  clean                 Remove dist/ folder and build artifacts
+  lint                  Validate all .box files for errors
+
+Add Types:
+  ui      - Interactive UI component
+  api     - API endpoint handler
+  page    - Full-page with SEO meta tags
+  layout  - Layout wrapper (nav, footer, etc.)
+
+Build Options:
+  --analyze, -a         Show detailed bundle analysis
+  --minify=none         No minification (preserve formatting)
+  --minify=basic        Basic minification (default)
+  --minify=aggressive   Full minification
+  --no-minify           Same as --minify=none
 
 Examples:
   box init
   box dev
   box build
+  box build --analyze
+  box build --minify=aggressive
   box add ui header
   box add api users
+  box add page about
+  box add layout main
+  box clean
+  box lint
+
+Configuration:
+  Create box.config.json to set defaults:
+  {
+    "minify": "basic",
+    "outDir": "dist",
+    "srcDir": "src",
+    "port": 3000,
+    "build": { "cleanFirst": false, "analyze": false }
+  }
 
 Options:
   --help, -h        Show this help message
@@ -67,7 +100,15 @@ async function main() {
         break;
       
       case 'build':
-        await build(cwd);
+        const analyzeFlag = args.includes('--analyze') || args.includes('-a');
+        // Check for minification level flags
+        let minifyLevel = null;
+        if (args.includes('--minify=none')) minifyLevel = 'none';
+        else if (args.includes('--minify=basic')) minifyLevel = 'basic';
+        else if (args.includes('--minify=aggressive')) minifyLevel = 'aggressive';
+        else if (args.includes('--no-minify')) minifyLevel = 'none';
+        
+        await build(cwd, { analyze: analyzeFlag, minify: minifyLevel });
         break;
       
       case 'add':
@@ -75,10 +116,18 @@ async function main() {
         const name = args[2];
         if (!type || !name) {
           console.error('❌ Usage: box add <type> <name>');
-          console.error('   Types: ui, api');
+          console.error('   Types: ui, api, page, layout');
           process.exit(1);
         }
         await add(cwd, type, name);
+        break;
+      
+      case 'clean':
+        await clean(cwd);
+        break;
+      
+      case 'lint':
+        await lint(cwd);
         break;
       
       default:
