@@ -18,9 +18,23 @@ BOX is a minimalist, component-oriented framework designed for **Vanilla Web Dev
 
 ## 🚀 Quick Start
 
+### Using NPX (Recommended)
+
 ```bash
-# Install globally
-npm install -g box-framework
+# Create a new project with one command
+npx @itayzrihan/create-box-app my-app
+cd my-app
+npm install
+npm run dev
+
+# Open http://localhost:3000
+```
+
+### Using npm Install
+
+```bash
+# Install framework globally
+npm install -g @itayzrihan/box-framework
 
 # Create a new project
 mkdir my-app && cd my-app
@@ -31,6 +45,11 @@ box dev
 
 # Open http://localhost:3000
 ```
+
+## 📦 npm Packages
+
+- **[@itayzrihan/box-framework](https://www.npmjs.com/package/@itayzrihan/box-framework)** - The core framework and CLI
+- **[@itayzrihan/create-box-app](https://www.npmjs.com/package/@itayzrihan/create-box-app)** - Project scaffolding tool
 
 ## 📁 Project Structure
 

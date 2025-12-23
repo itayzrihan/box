@@ -1,10 +1,10 @@
 {
-  "name": "box-framework",
+  "name": "@itayzrihan/box-framework",
   "version": "1.0.0",
   "description": "A zero-dependency, full-stack framework based on Atomic Boxes. Build modern web apps with pure HTML/CSS/JS.",
   "main": "lib/index.js",
   "bin": {
-    "box": "./bin/box.js"
+    "box": "bin/box.js"
   },
   "scripts": {
     "test": "node test/test.js"
