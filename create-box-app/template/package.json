@@ -1,0 +1,19 @@
+{
+  "name": "my-box-app",
+  "version": "1.0.0",
+  "description": "A BOX Framework application",
+  "scripts": {
+    "build": "box build",
+    "dev": "box dev",
+    "start": "node dist/server.js"
+  },
+  "keywords": [
+    "box",
+    "framework"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "box-framework": "^1.0.0"
+  }
+}

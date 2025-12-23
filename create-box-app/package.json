@@ -1,0 +1,42 @@
+{
+  "name": "create-box-app",
+  "version": "1.0.0",
+  "description": "Create a new BOX Framework application with one command",
+  "main": "bin/create-box-app.js",
+  "bin": {
+    "create-box-app": "./bin/create-box-app.js"
+  },
+  "files": [
+    "bin/",
+    "template/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "box",
+    "framework",
+    "scaffolding",
+    "cli",
+    "boilerplate",
+    "template",
+    "generator",
+    "create",
+    "vanilla",
+    "zero-dependency"
+  ],
+  "author": "Itay Zrihan <itayzrihan@github.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itayzrihan/box.git"
+  },
+  "bugs": {
+    "url": "https://github.com/itayzrihan/box/issues"
+  },
+  "homepage": "https://github.com/itayzrihan/box#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

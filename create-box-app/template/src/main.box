@@ -1,0 +1,17 @@
+<style>
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<template>
+  <div class="app">
+    <include src="./welcome.box" />
+  </div>
+</template>
+
+<script>
+  console.log('📦 BOX App initialized!');
+</script>

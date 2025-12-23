@@ -1,0 +1,11 @@
+{
+  "files.associations": {
+    "*.box": "html"
+  },
+  "emmet.includeLanguages": {
+    "box": "html"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  }
+}
