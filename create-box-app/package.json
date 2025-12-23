@@ -1,6 +1,6 @@
 {
   "name": "@itayzrihan/create-box-app",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Create a new BOX Framework application with one command",
   "main": "bin/create-box-app.js",
   "bin": {
