@@ -86,5 +86,3 @@
   // BOX automatically includes all files referenced with <include />
   console.log('🚀 BOX App loaded successfully!');
 </script>
-  console.log('📦 BOX App initialized!');
-</script>
