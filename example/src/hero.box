@@ -1,0 +1,100 @@
+<style>
+  .hero {
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+    color: #1a1a2e;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  }
+  
+  .hero-counter {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+  }
+  
+  .counter-value {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #667eea;
+  }
+  
+  .counter-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .counter-btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .counter-btn-add {
+    background: #667eea;
+    color: white;
+  }
+  
+  .counter-btn-sub {
+    background: #e0e0e0;
+    color: #333;
+  }
+</style>
+
+<template>
+  <section class="hero">
+    <h1 class="hero-title">Welcome to BOX 📦</h1>
+    <p class="hero-subtitle">A zero-dependency, full-stack framework for the modern web</p>
+    <a href="/docs" class="hero-cta">Get Started →</a>
+    
+    <div class="hero-counter">
+      <p>Reactive Counter Demo</p>
+      <div class="counter-value" box-bind="counter">0</div>
+      <div class="counter-buttons">
+        <button class="counter-btn counter-btn-sub" onclick="Box.state.counter--">−</button>
+        <button class="counter-btn counter-btn-add" onclick="Box.state.counter++">+</button>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+  // Initialize counter state
+  Box.state.counter = 0;
+  
+  // Listen for counter updates
+  Box.on('counter:update', (newValue, oldValue) => {
+    console.log(`Counter changed: ${oldValue} → ${newValue}`);
+  });
+</script>

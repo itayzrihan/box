@@ -1,0 +1,35 @@
+<style>
+  .app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-content {
+    flex: 1;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+</style>
+
+<template>
+  <div class="app">
+    <include src="./header.box" />
+    
+    <main class="app-content">
+      <include src="./hero.box" />
+    </main>
+    
+    <include src="./footer.box" />
+  </div>
+</template>
+
+<script>
+  console.log('📦 BOX App initialized!');
+  
+  // Set initial state
+  Box.state.appName = 'My BOX App';
+  Box.state.year = new Date().getFullYear();
+</script>

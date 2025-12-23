@@ -1,0 +1,91 @@
+{
+  "BOX UI Component": {
+    "prefix": "box-ui",
+    "body": [
+      "<style>",
+      "  .${1:component-name} {",
+      "    $2",
+      "  }",
+      "</style>",
+      "",
+      "<template>",
+      "  <div class=\"${1:component-name}\">",
+      "    $3",
+      "  </div>",
+      "</template>",
+      "",
+      "<script>",
+      "  console.log('${1:component-name} initialized');",
+      "  $4",
+      "</script>"
+    ],
+    "description": "Create a BOX UI component"
+  },
+  "BOX API Endpoint": {
+    "prefix": "box-api",
+    "body": [
+      "/* BOX_CONFIG: { \"method\": \"${1|GET,POST,PUT,DELETE|}\", \"auth\": ${2|false,true|} } */",
+      "",
+      "export default async (req, res, context) => {",
+      "  try {",
+      "    const data = {",
+      "      $3",
+      "    };",
+      "    ",
+      "    return { status: 200, data };",
+      "  } catch (err) {",
+      "    console.error('API Error:', err);",
+      "    return { status: 500, error: 'Internal server error' };",
+      "  }",
+      "};"
+    ],
+    "description": "Create a BOX API endpoint"
+  },
+  "BOX Include": {
+    "prefix": "box-include",
+    "body": [
+      "<include src=\"./${1:component}.box\" />"
+    ],
+    "description": "Include another BOX component"
+  },
+  "BOX State Binding": {
+    "prefix": "box-bind",
+    "body": [
+      "<span box-bind=\"${1:stateName}\">${2:Default Value}</span>"
+    ],
+    "description": "Add reactive state binding"
+  },
+  "BOX Input Binding": {
+    "prefix": "box-input",
+    "body": [
+      "<input type=\"${1|text,email,password,number|}\" box-bind=\"${2:stateName}\" placeholder=\"${3:Placeholder}\" />"
+    ],
+    "description": "Add two-way input binding"
+  },
+  "BOX State Set": {
+    "prefix": "box-state",
+    "body": [
+      "Box.state.${1:name} = ${2:value};"
+    ],
+    "description": "Set reactive state"
+  },
+  "BOX Event Listener": {
+    "prefix": "box-on",
+    "body": [
+      "Box.on('${1:stateName}:update', (newValue, oldValue) => {",
+      "  ${2:// Handle state change}",
+      "});"
+    ],
+    "description": "Listen for state changes"
+  },
+  "BOX API Call": {
+    "prefix": "box-fetch",
+    "body": [
+      "const result = await Box.api('${1:endpoint}', {",
+      "  method: '${2|GET,POST,PUT,DELETE|}',",
+      "  ${3:body: { }}",
+      "});"
+    ],
+    "description": "Make an API call"
+  }
+}

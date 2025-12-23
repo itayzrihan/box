@@ -1,0 +1,48 @@
+{
+  "name": "box-framework",
+  "version": "1.0.0",
+  "description": "A zero-dependency, full-stack framework based on Atomic Boxes. Build modern web apps with pure HTML/CSS/JS.",
+  "main": "lib/index.js",
+  "bin": {
+    "box": "./bin/box.js"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "framework",
+    "vanilla",
+    "zero-dependency",
+    "full-stack",
+    "components",
+    "web-framework",
+    "no-build",
+    "html",
+    "css",
+    "javascript",
+    "nodejs",
+    "api",
+    "reactive",
+    "vibe-coding"
+  ],
+  "author": "Itay Zrihan <itayzrihan@github.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itayzrihan/box.git"
+  },
+  "bugs": {
+    "url": "https://github.com/itayzrihan/box/issues"
+  },
+  "homepage": "https://github.com/itayzrihan/box#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
+}

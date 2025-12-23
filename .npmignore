@@ -1,0 +1,27 @@
+# Development files
+.vscode/
+test/
+example/
+specs.md
+CONTRIBUTING.md
+
+# Build artifacts
+dist/
+*.log
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker (not needed for npm)
+Dockerfile
+docker-compose.yml

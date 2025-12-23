@@ -1,0 +1,14 @@
+{
+  "files.associations": {
+    "*.box": "html"
+  },
+  "emmet.includeLanguages": {
+    "box": "html"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "[box]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
+}

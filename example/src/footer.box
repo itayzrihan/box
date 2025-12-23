@@ -1,0 +1,29 @@
+<style>
+  .footer {
+    background: #1a1a2e;
+    color: rgba(255,255,255,0.7);
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .footer-text {
+    margin: 0;
+  }
+  
+  .footer-heart {
+    color: #e74c3c;
+  }
+</style>
+
+<template>
+  <footer class="footer">
+    <p class="footer-text">
+      Built with <span class="footer-heart">♥</span> using BOX Framework
+      © <span box-bind="year">2024</span>
+    </p>
+  </footer>
+</template>
+
+<script>
+  console.log('Footer component loaded');
+</script>
