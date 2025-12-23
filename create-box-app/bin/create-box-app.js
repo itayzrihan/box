@@ -69,7 +69,9 @@ function copyDir(src, dest) {
 
   files.forEach(file => {
     const srcPath = path.join(src, file);
-    const destPath = path.join(dest, file);
+    // Rename _gitignore back to .gitignore (npm ignores .gitignore files)
+    const destFile = file === '_gitignore' ? '.gitignore' : file;
+    const destPath = path.join(dest, destFile);
     const stat = fs.statSync(srcPath);
 
     if (stat.isDirectory()) {
