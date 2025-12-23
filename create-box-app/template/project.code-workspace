@@ -1,0 +1,38 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "*.box": "html"
+    },
+    "emmet.includeLanguages": {
+      "box": "html"
+    },
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "editor.bracketPairColorization.enabled": true,
+    "html.autoClosingTags": true,
+    "css.colorDecorators": true,
+    "files.exclude": {
+      "**/node_modules": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "formulahendry.auto-rename-tag",
+      "formulahendry.auto-close-tag",
+      "christian-kohler.path-intellisense"
+    ]
+  }
+}

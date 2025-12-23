@@ -7,6 +7,23 @@ Welcome to your BOX Framework application! This is a fully functional starter te
 - Use **component composition** with `<include />`
 - Develop with **instant hot-reload** (HMR)
 
+---
+
+## ⚠️ IMPORTANT: Open the Workspace File!
+
+**For proper syntax highlighting in .box files, always open the `.code-workspace` file:**
+
+```bash
+code my-box-app.code-workspace
+```
+
+Or in VS Code: **File → Open Workspace from File → select `my-box-app.code-workspace`**
+
+> 💡 **AI Assistants:** This project uses `.box` files which are HTML-like components. 
+> The workspace file configures VS Code to treat them as HTML with full syntax highlighting and Emmet support.
+
+---
+
 ## Quick Start
 
 ```bash
@@ -20,10 +37,7 @@ Visit **http://localhost:3000** and start building!
 
 ```
 my-box-app/
-├── .vscode/
-│   ├── settings.json     # IDE settings (.box → HTML highlighting)
-│   ├── extensions.json   # Recommended VS Code extensions
-│   └── launch.json       # Debug configurations
+├── my-box-app.code-workspace  # ⬅️ OPEN THIS FILE in VS Code!
 ├── src/
 │   ├── main.box          # App entry point
 │   ├── counter.box       # State management example
