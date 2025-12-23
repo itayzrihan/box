@@ -1,11 +1,44 @@
 {
+  // Associate .box files with HTML for syntax highlighting
   "files.associations": {
     "*.box": "html"
   },
+  
+  // Enable Emmet in .box files for fast HTML typing
   "emmet.includeLanguages": {
     "box": "html"
   },
+  
+  // Enable autocomplete in strings (useful for box-bind attributes)
   "editor.quickSuggestions": {
     "strings": true
+  },
+  
+  // Format on save for consistent code style
+  "editor.formatOnSave": true,
+  
+  // Use 2 spaces for indentation (HTML/CSS/JS standard)
+  "editor.tabSize": 2,
+  
+  // Wrap long lines for readability
+  "editor.wordWrap": "on",
+  
+  // Show matching brackets clearly
+  "editor.bracketPairColorization.enabled": true,
+  
+  // Auto-close HTML tags
+  "html.autoClosingTags": true,
+  
+  // Show color decorators in CSS
+  "css.colorDecorators": true,
+  
+  // Exclude build artifacts from explorer and search
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": false
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true
   }
 }

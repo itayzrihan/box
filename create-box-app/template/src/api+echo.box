@@ -1,0 +1,40 @@
+/*
+ * BOX API ENDPOINT: POST /api/echo
+ * =================================
+ * 
+ * Example POST endpoint that echoes back what you send.
+ * Test with:
+ * 
+ * fetch('/api/echo', {
+ *   method: 'POST',
+ *   headers: { 'Content-Type': 'application/json' },
+ *   body: JSON.stringify({ name: 'Alice', message: 'Hello!' })
+ * })
+ */
+
+/* BOX_CONFIG: { "method": "POST", "auth": false } */
+
+export default async (req, res, ctx) => {
+  try {
+    // req.body contains the parsed JSON body
+    const { name, message } = req.body || {};
+    
+    if (!name || !message) {
+      return { 
+        status: 400, 
+        error: "Missing required fields: name, message" 
+      };
+    }
+    
+    return { 
+      status: 200, 
+      data: {
+        received: { name, message },
+        echo: `${name} says: "${message}"`,
+        timestamp: new Date().toISOString()
+      }
+    };
+  } catch (err) {
+    return { status: 500, error: err.message || "Server error" };
+  }
+};

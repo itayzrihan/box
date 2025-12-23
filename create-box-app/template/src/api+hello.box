@@ -1,15 +1,41 @@
+/*
+ * BOX API ENDPOINT: /api/hello
+ * =============================
+ * 
+ * This file creates a GET endpoint at /api/hello
+ * 
+ * FILE NAMING CONVENTION:
+ * - api+name.box → GET /api/name
+ * - api+users+list.box → GET /api/users/list
+ * - Use BOX_CONFIG to change HTTP method (GET, POST, PUT, DELETE)
+ * 
+ * AVAILABLE IN HANDLER:
+ * - req.body: Request body (for POST/PUT)
+ * - req.query: URL query parameters (?name=value)
+ * - req.headers: Request headers
+ * - ctx.env: Environment variables (process.env)
+ * 
+ * RETURN FORMAT:
+ * - { status: 200, data: {...} } → JSON response
+ * - { status: 404, error: "Not found" } → Error response
+ */
+
 /* BOX_CONFIG: { "method": "GET", "auth": false } */
 
-export default async (req, res, context) => {
+export default async (req, res, ctx) => {
   try {
+    // Example: Access query parameters
+    // const name = req.query.name || 'World';
+    
     const greeting = {
       message: "Hello from BOX API!",
       timestamp: new Date().toISOString(),
-      framework: "BOX Framework v1.0.0"
+      framework: "BOX Framework v1.0.0",
+      tip: "Edit src/api+hello.box to customize this endpoint"
     };
     
     return { status: 200, data: greeting };
   } catch (err) {
-    return { status: 500, error: "Server error" };
+    return { status: 500, error: err.message || "Server error" };
   }
 };

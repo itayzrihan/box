@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "description": "A BOX Framework application",
   "scripts": {
-    "build": "box build",
     "dev": "box dev",
-    "start": "node dist/server.js"
+    "build": "box build",
+    "start": "node dist/server.js",
+    "preview": "npm run build && npm run start"
   },
   "keywords": [
     "box",
-    "framework"
+    "framework",
+    "vibe-coding"
   ],
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "box-framework": "^1.0.0"
+  "dependencies": {
+    "@itayzrihan/box-framework": "^1.0.0"
   }
 }

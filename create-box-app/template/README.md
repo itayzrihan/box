@@ -16,13 +16,26 @@ npm run dev
 
 Visit **http://localhost:3000** and start building!
 
-## 📁 What's Inside
+## 📁 Project Structure
 
-- **`src/main.box`** - Your app's entry point
-- **`counter.box`** - Interactive component with state (learn reactive updates!)
-- **`api-demo.box`** - Calling API endpoints from the frontend
-- **`api+hello.box`** - Backend API route example
-- **`learning-guide.box`** - Comprehensive guide to vibe coding with BOX
+```
+my-box-app/
+├── .vscode/
+│   ├── settings.json     # IDE settings (.box → HTML highlighting)
+│   ├── extensions.json   # Recommended VS Code extensions
+│   └── launch.json       # Debug configurations
+├── src/
+│   ├── main.box          # App entry point
+│   ├── counter.box       # State management example
+│   ├── api-demo.box      # API integration example
+│   ├── learning-guide.box # Complete framework guide
+│   ├── api+hello.box     # GET /api/hello
+│   └── api+echo.box      # POST /api/echo
+├── assets/               # Static files (images, fonts)
+├── dist/                 # Build output (auto-generated)
+├── package.json
+└── README.md
+```
 
 ## 🎯 Development Workflow
 
@@ -31,21 +44,117 @@ Visit **http://localhost:3000** and start building!
 3. See your changes instantly (no build step needed!)
 4. Use `npm run build` for production
 
-## 📚 Learn More
+## 📚 Key Concepts
 
-Each `.box` file is heavily commented with tips on:
-- ✨ Reactive state management with `Box.state`
-- 🔌 Two-way binding with `box-bind="propertyName"`
-- 📡 API integration and fetching
-- 🎨 CSS scoping and component encapsulation
-- 🚀 Production builds and deployment
+### .box File Structure
 
-Check out **`learning-guide.box`** for a complete tutorial!
+Every `.box` file has three sections:
+
+```html
+<style>
+  /* Scoped CSS - won't leak to other components */
+  .my-class { color: blue; }
+</style>
+
+<template>
+  <!-- HTML with special attributes -->
+  <div class="my-class">
+    <span box-bind="count">0</span>
+    <include src="./other.box" />
+  </div>
+</template>
+
+<script>
+  // Vanilla JavaScript
+  Box.state.count = 42;
+</script>
+```
+
+### Reactive State
+
+```javascript
+// Set state (auto-updates DOM elements with box-bind="count")
+Box.state.count = 0;
+Box.state.count++;  // UI updates automatically!
+
+// Listen for changes
+Box.on('count:changed', (value) => console.log(value));
+
+// Emit custom events
+Box.emit('user:login', userData);
+```
+
+### API Endpoints
+
+Files named `api+name.box` become routes:
+
+| File | Route |
+|------|-------|
+| `api+hello.box` | `GET /api/hello` |
+| `api+echo.box` | `POST /api/echo` |
+| `api+users+list.box` | `GET /api/users/list` |
+
+## 🛠 Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server with HMR |
+| `npm run build` | Build for production |
+| `npm run start` | Run production server |
+| `npm run preview` | Build and run production |
+
+## 🔌 VS Code Setup
+
+Your project comes pre-configured with:
+
+- ✅ `.box` files recognized as HTML (syntax highlighting)
+- ✅ Emmet support for fast HTML typing
+- ✅ Recommended extensions for better DX
+- ✅ Debug configurations ready to use
+
+**Open the project folder in VS Code** to activate all settings.
 
 ## 🤖 AI-Friendly Code
 
 Copy any `.box` file into Claude, ChatGPT, or your favorite AI assistant.
 The pure HTML/CSS/JS structure makes it perfect for AI-assisted development.
+
+### Prompt Template
+
+```
+I'm using BOX Framework. Here's my component:
+
+[paste your .box file]
+
+Help me [describe what you want to do].
+
+Note: BOX uses:
+- Box.state for reactive state
+- box-bind="property" for two-way binding
+- <include src="./file.box" /> for composition
+- api+name.box files for backend endpoints
+```
+
+## 📦 Production Build
+
+```bash
+npm run build
+```
+
+This generates `dist/` containing:
+- `index.html` - Compiled frontend
+- `style.css` - Minified styles  
+- `app.js` - Minified JavaScript
+- `server.js` - Node.js backend server
+
+Deploy `dist/` to any Node.js hosting (Vercel, Railway, Render, etc.)
+
+## 📚 Learn More
+
+- 📖 [BOX Framework GitHub](https://github.com/itayzrihan/box)
+- 📦 [npm: @itayzrihan/box-framework](https://www.npmjs.com/package/@itayzrihan/box-framework)
+
+Check the example components in `src/` - they're heavily commented with tips!
 
 ---
 
